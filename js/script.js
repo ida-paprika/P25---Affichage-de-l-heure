@@ -1,18 +1,19 @@
 const BTN = document.querySelector('button');
 const CONTENT = document.querySelector('#content');
+const CLOCK = document.querySelector('#clock');
+
+setInterval(timeDisplay, 1000);
 
 BTN.addEventListener('click', function(){
-    setInterval(timeDisplay, 1000);
+    CONTENT.textContent = "Hello World";
 });
 
 function timeDisplay() {
     const DATE = new Date();
-    CONTENT.textContent = DATE.toLocaleTimeString("fr");
+    CLOCK.innerHTML = DATE.toLocaleTimeString("fr");
     if (DATE.getSeconds() % 3 == 0) {
-        CONTENT.style.color = "red";
-        CONTENT.style.fontWeight = "bold";
+        CLOCK.classList.add("text-danger", "fw-bold");
     } else {
-        CONTENT.style.color = null;
-        CONTENT.style.fontWeight = null;
+        CLOCK.classList.remove("text-danger", "fw-bold");
     }
 }
